@@ -189,7 +189,7 @@ include('includes/menu.php')
                                                     <td><?php echo $donnees['nomrepas']; ?></td>
 	                                                
 	                                                <td>
-	                                                	<a href="modifier-commande.php?id=<?php echo $donnees['id']; ?>" class="btn btn-outline-success">modifier</a>
+	                                                	<a href="controller/modifcommande.php?id=<?php echo $donnees['id']; ?>" class="btn btn-outline-success">modifier</a>
 	                                                	<a href="controller/suppcommande.php?id=<?php echo $donnees['id']; ?>" class="btn btn-outline-danger">supprimer</a>
 	                                                </td>
                                             	</tr>

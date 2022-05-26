@@ -7,11 +7,9 @@ $donnees=$req->fetch();
 <!DOCTYPE html>
 <html lang="en">
 
-
-<!-- Mirrored from slimhamdi.net/amira/demos/contact.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 10 Feb 2022 11:27:50 GMT -->
 <head>
     <meta charset="utf-8" />
-    <title> SDE</title>
+    <title> Foody Restaurant</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- Favicon -->
@@ -45,7 +43,7 @@ $donnees=$req->fetch();
     <!-- Preloader Starts -->
     <div class="preloader" id="preloader">
         <div class="logopreloader">
-           <h1>SDE</h1>
+           <h1>Foody Restaurant</h1>
         </div>
         <div class="loader" id="loader"></div>
     </div>
@@ -297,5 +295,5 @@ $donnees=$req->fetch();
 </body>
 
 
-<!-- Mirrored from slimhamdi.net/amira/demos/contact.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 10 Feb 2022 11:27:50 GMT -->
+
 </html>

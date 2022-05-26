@@ -173,7 +173,7 @@
                     <div class="row">
                         <!-- Image Starts -->
                         <div class="col-lg-5 col-md-12">
-                            <img  src="..\demos\img\iphone.png" width=500px height=500px >
+                            <img  src="..\food\img\iphone.png" width=500px height=500px >
                         </div>
                         <!-- Image Ends -->
                         <!-- Details Starts -->

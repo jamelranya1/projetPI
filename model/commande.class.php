@@ -1,27 +1,21 @@
 <?php
 
 class commande{
-
 private $nom;
-
 private $prenom;
-
 private $adresse;
-
 private $tel;
 private $nomrepas;
 
  
 
 function __construct($nom,$prenom,$adresse,$tel,$nomrepas){
-
-$this->nom = addslashes($nom);
-
-$this->prenom = addslashes($prenom);
-
-$this->adresse = addslashes($adresse);
-$this->tel = addslashes($tel);
-$this->nomrepas = addslashes($nomrepas);
+    $this->nom =($nom);
+    $this->prenom =($prenom);
+    $this->adresse =($adresse);
+    $this->tel =($tel);
+    $this->nomrepas =($nomrepas);
+    
 
  
 
