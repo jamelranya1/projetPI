@@ -33,7 +33,18 @@ $req = $bdd->exec("INSERT INTO `commande`(`nom`, `prenom`, `adresse`, `tel`,`nom
 }
 
 
+public function modifier(){ 
 
+    include('../includes/connect_db.php');
+
+       $id=$_GET['id'];
+        
+        $r=$bdd->exec(" UPDATE `commande` SET `nom`='$this->nom',`prenom`='$this->prenom',`adresse`='$this->adresse',`tel`='$this->tel',`nomrepas`='$this->nomrepas' WHERE id = $id");
+				
+        
+        echo'oui modif';
+        
+}	
 
 
 
@@ -60,7 +71,6 @@ public function supprimer(){
 }
 
 
-//$instance = new User($_POST['nom'],$_POST['prenom'],$_POST['cin'],$_POST['datedenaissance'],$_POST['adr'],$_POST['numtel'],$_POST['mp'],$_POST['e_mail'],$_POST['paiement'],$_POST['typeoffre'],$_POST['reussite']);
 
 
 ?>

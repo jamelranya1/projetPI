@@ -1,13 +1,12 @@
 <?php 
 include('includes/connect_db.php');
-$req=$bdd->query('SELECT * FROM commande');
+$id =$_GET['id'];
+$req=$bdd->query("SELECT * FROM commande where id=$id");
+$donnees=$req->fetch();
 session_start();
 if(empty($_SESSION['login'])){
      header('location:login.php');
 }
-
-
-
 ?>
 
 <!DOCTYPE html>
@@ -22,7 +21,7 @@ if(empty($_SESSION['login'])){
 <meta name="description" content="Drift - A fully responsive, HTML5 based admin template">
 <meta name="keywords" content="Responsive, HTML5, admin theme, business, professional, jQuery, web design, CSS3, sass">
 <!-- /meta tags -->
-<title>liste commande</title>
+<title>modifier commande</title>
 
 <!-- Site favicon -->
 <link rel="shortcut icon" href="assets/images/favicon.ico" type="image/x-icon">
@@ -37,11 +36,7 @@ if(empty($_SESSION['login'])){
 <link rel="stylesheet" href="../node_modules/perfect-scrollbar/css/perfect-scrollbar.css">
 <!-- /perfect scrollbar stylesheet -->
 
-<!-- Load Styles -->    <!-- Data table stylesheet -->
-    <link href="../node_modules/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet">
-    <!-- /data table stylesheet -->
-
-    <link rel="stylesheet" href="assets/css/semidark-style-1.min.css">
+<!-- Load Styles -->    <link rel="stylesheet" href="assets/css/semidark-style-1.min.css">
     <!-- /load styles -->
 
 </head>
@@ -77,129 +72,84 @@ include('includes/menu.php')
                 <!-- Site Content -->
                 <div class="dt-content">
 
-                    <!-- Page Header -->
-                    <div class="dt-page__header">
-                        <h1 class="dt-page__title">liste commande</h1>
-                    </div>
-                    <!-- /page header -->
+                    
 
                     <!-- Grid -->
                     <div class="row">
 
                         <!-- Grid Item -->
-                        <div class="col-xl-12">
-
-                            <!-- Entry Header -->
-                            
-                            <!-- /entry header -->
+                        <div class="col-md-12">
 
                             <!-- Card -->
                             <div class="dt-card">
 
+                                <!-- Card Header -->
+                                <div class="dt-card__header">
+
+                                    <!-- Card Heading -->
+                                    <div class="dt-card__heading">
+                                        <h3 class="dt-card__title">modifier commande</h3>
+                                    </div>
+                                    <!-- /card heading -->
+
+                                </div>
+                                <!-- /card header -->
+
                                 <!-- Card Body -->
                                 <div class="dt-card__body">
 
-                                    <!-- Tables -->
-                                    <div class="table-responsive">
-                                     
+                                    <!-- Form -->
+                                    <form action="controller/modifcommande.php?id=<?php echo $donnees['id'] ?>" method="post">
 
-
-                                      <?php 
-                                      if(isset($_GET['resultat'])){
-                                        if($_GET['resultat']=='oui'){
-
-
-                                      ?>
-
-                                      <div class="alert alert-success" role="alert">
-                                    <strong>ajouter!</strong> ajouter avec succes 
-                                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                      <span aria-hidden="true">&times;</span>
-                                     </button>
-                                       </div>
-
-                                       <?php     }
-                                         }
-                                       ?>
-                                         <?php 
-                                      if(isset($_GET['resultat'])){
-                                        if($_GET['resultat']=='oui modif'){
-
-
-                                      ?>
-
-
-
-
-                                      <div class="alert alert-success" role="alert">
-                                     <strong>modifier!</strong> modifier avec succes
-                                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                      <span aria-hidden="true">&times;</span>
-                                     </button>
-                                       </div>
-
-                                       <?php     }
-                                         }
-                                      
-                                       ?>
-                                         <?php 
-                                      if(isset($_GET['resultat'])){
-                                        if($_GET['resultat']=='oui supprimer'){
-
-
-                                      ?>
-
-
-
-
-                                      <div class="alert alert-danger" role="alert">
-                                     <strong>supprimer!</strong> supprimer avec succes
-                                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                      <span aria-hidden="true">&times;</span>
-                                     </button>
-                                       </div>
-
-                                       <?php     }
-                                         }
-                                       ?>
-
-
-                                        <table id="data-table" class="table table-striped table-bordered table-hover">
-                                            <thead>
-                                            <tr>
-                                                <th>nom</th>
-                                                <th>prenom</th>
-                                                <th>adresse</th>
-                                                <th>tel</th>
-                                                <th>nomrepas</th>
-                                                <th>action</th>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                              <?php 
-                                              while ($donnees =$req->fetch()) {
-                                                
-                                             
-                                              ?>
-                                            	<tr>
-                                            		<td><?php echo $donnees['nom']; ?></td>
-	                                                <td><?php echo $donnees['prenom']; ?></td>
-	                                                <td><?php echo $donnees['adresse']; ?></td>
-                                                    <td><?php echo $donnees['tel']; ?></td>
-                                                    <td><?php echo $donnees['nomrepas']; ?></td>
-	                                                
-	                                                <td>
-	                                                	<a href="modifier-commande.php?id=<?php echo $donnees['id']; ?>" class="btn btn-outline-success">modifier</a>
-	                                                	<a href="controller/suppcommande.php?id=<?php echo $donnees['id']; ?>" class="btn btn-outline-danger">supprimer</a>
-	                                                </td>
-                                            	</tr>
-                                              <?php     }?>
-                                            </tbody>
+                                        <!-- Form Group -->
+                                        <div class="form-group">
+                                            <label for="nom">Nom <span style="color:red"> * </span></label>
+                                            <input type="text" class="form-control" 
+                                                   aria-describedby="emailHelp1"
+                                                   placeholder="Enter nom" value="<?php echo $donnees['nom']; ?>" name="nom">
                                             
-                                        </table>
+                                        </div>
+                                         <div class="form-group">
+                                            <label for="prenom">prenom<span style="color:red"> * </span></label>
+                                            <input type="text" class="form-control" 
+                                                   aria-describedby="emailHelp1"
+                                                   placeholder="Enter prenom" value="<?php echo $donnees['prenom']; ?>" name="prenom">
+                                            
+                                        </div>
+                                         <div class="form-group">
+                                            <label for="adresse">adresse<span style="color:red"> * </span></label>
+                                            <input type="text" class="form-control" 
+                                                   aria-describedby="emailHelp1"
+                                                   placeholder="Enter adresse" value="<?php echo $donnees['adresse']; ?>" name="adresse">
+                                            
+                                        </div>
+                                       
+                                        
+                                        <div class="form-group">
+                                            <label for="tel">tel<span style="color:red"> * </span></label>
+                                            <input type="text" class="form-control" 
+                                                   aria-describedby="emailHelp1"
+                                                   placeholder="Enter tel" value="<?php echo $donnees['tel']; ?>" name="tel">
+                                            
+                                        </div>
+                                         <div class="form-group">
+                                            <label for="nomrepas">nomrepas<span style="color:red"> * </span></label>
+                                            <input type="text" class="form-control" 
+                                                   aria-describedby="emailHelp1"
+                                                   placeholder="Enter  nomrepas" value="<?php echo $donnees['nomrepas']; ?>" name="nomrepas">
+                                            
+                                        </div>
 
-                                    </div>
-                                    <!-- /tables -->
+                                        <div class="form-group mb-0">
+                                            <button type="submit" class="btn btn-primary text-uppercase">modifier</button>
+                                            
+                                        </div>
+                                        <!-- /form group -->
+
+
+                                    </form>
+                                    <!-- /form -->
+                                   
 
                                 </div>
                                 <!-- /card body -->
@@ -210,11 +160,12 @@ include('includes/menu.php')
                         </div>
                         <!-- /grid item -->
 
+                        
+
                     </div>
                     <!-- /grid -->
 
-                </div>
-                <!-- /site content -->
+                   
 
                 <!-- Footer -->
 <?php
@@ -538,9 +489,6 @@ include('includes/footer.php')
 <script src="../node_modules/sweetalert2/dist/sweetalert2.js"></script>
 <script src="assets/js/functions.js"></script>
 <script src="assets/js/customizer.js"></script><!-- Custom JavaScript -->
-<script src="../node_modules/datatables.net/js/jquery.dataTables.js"></script>
-<script src="../node_modules/datatables.net-bs4/js/dataTables.bootstrap4.js"></script>
-<script src="assets/js/custom/data-table.js"></script>
 <script src="assets/js/script.js"></script>
 
 </body>

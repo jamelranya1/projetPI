@@ -168,7 +168,7 @@ session_start();
                                                   <td><?php echo $donnees['tel']; ?></td>
                                                   <td><?php echo $donnees['nomrepas']; ?></td>
 	                                                <td>
-	                                                	<a href="controller/modifcommande.php?id=<?php echo $donnees['id']; ?>" class="btn btn-success">modifier</a>
+	                                                	<a href="modifier-commande.php?id=<?php echo $donnees['id']; ?>" class="btn btn-success">modifier</a>
 	                                                	<a href="controller/suppcommande.php?id=<?php echo $donnees['id']; ?>" class="btn btn-danger">supprimer</a>
 	                                                </td>
                                             	</tr>

@@ -47,7 +47,18 @@ public function supprimer(){
  
 
 }
+public function modifier(){ 
 
+    include('../includes/connect_db.php');
+
+       $id=$_GET['id'];
+        
+        $r=$bdd->exec(" UPDATE `commande` SET `nom`='$this->nom',`prenom`='$this->prenom',`adresse`='$this->adresse',`tel`='$this->tel',`nomrepas`='$this->nomrepas' WHERE id = $id");
+				
+        
+        echo'oui modif';
+        
+}	
 public function ajouter(){ 
 
     include('../includes/connect_db.php');
